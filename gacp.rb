@@ -57,8 +57,7 @@ c = ColorizedString.new("Success!").light_green + " Pushed to Github 🤓"
 
 cute "git commit -m \"#{msg}\""
 puts "💍 👬 Committed 👭 💒"
-Whirly.start spinner: "dots", stop: "" do
-  Whirly.status = "Pushing 🤭"
-  system "git push"
+Whirly.start spinner: "dots", status: "Pushing 🤭" do
+  a = system "git push"
 end
 puts "📍 " + c
