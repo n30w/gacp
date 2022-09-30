@@ -6,11 +6,13 @@
 require 'rubygems'
 require 'bundler/setup'
 require 'colorized_string'
+require 'whirly'
 
 ColorizedString.colors                       # return array of all possible colors names
 ColorizedString.modes                        # return array of all possible modes
 ColorizedString.disable_colorization = false
 
+# Its called "cute" because thats the second part of "execute"
 def cute(*cmd)
   # https://www.geeksforgeeks.org/closures-in-ruby/
   out = -> do
@@ -46,14 +48,17 @@ puts "📝 Commit message:"
 print expect
 msg = gets.chomp
 until msg.length > 1 do
-  puts "🤨 " + c
+  puts "🤨 #{c}"
   print expect
+  msg = gets.chomp
 end
 
-c = ColorizedString.new("Success").light_green + "! Pushed to Github 🤓"
+c = ColorizedString.new("Success!").light_green + " Pushed to Github 🤓"
 
-system "git commit -m \"#{msg}\""
-puts "💍 Committed 💒"
-puts "pushing..."
-cute "git push"
+cute "git commit -m \"#{msg}\""
+puts "💍 👬 Committed 👭 💒"
+Whirly.start spinner: "dots", stop: "" do
+  Whirly.status = "Pushing 🤭"
+  system "git push"
+end
 puts "📍 " + c
