@@ -1,0 +1,18 @@
+GIT
+  remote: https://github.com/fazibear/colorize
+  revision: 526654c6d7dfc5483b70184d06b994eba8359514
+  specs:
+    colorize (0.8.1)
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+
+PLATFORMS
+  arm64-darwin-21
+
+DEPENDENCIES
+  colorize!
+
+BUNDLED WITH
+   2.3.22
