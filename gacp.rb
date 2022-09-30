@@ -56,3 +56,5 @@ Whirly.start spinner: "dots", status: "Pushing 🤭" do
   cute("git push")
 end
 puts "📍 #{c}"
+
+#test
