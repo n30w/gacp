@@ -13,7 +13,7 @@ ColorizedString.disable_colorization = false
 # Add more options for gacp
 # Its called "cute" because thats the second part of "execute"
 
-def cute(cmd)
+def cute (cmd)
   # https://www.geeksforgeeks.org/closures-in-ruby/
   out = -> (cmd) do
     begin
@@ -30,7 +30,7 @@ def cute(cmd)
   end
 end
 
-system "bundle update --all --quiet --major" # https://bundler.io/man/bundle-update.1.html
+# system "bundle update --all --quiet --major" https://bundler.io/man/bundle-update.1.html
 cute("git add \.")
 puts "✅ Added files to Git for staging"
 
@@ -50,7 +50,7 @@ c = ColorizedString.new("Success!").light_green + " Pushed to Github 🤓"
 cute("git commit -m \"#{msg}\"")
 puts "💍 👬 Committed 👭 💒"
 # cute("git push")
-Whirly.start spinner: "dots2", status: "Pushing 🤭" do
+Whirly.start spinner: "dots2", status: "Pushing 🤭", stop: "😇" do
   # %x[git push]
   cute("git push")
 end
