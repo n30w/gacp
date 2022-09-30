@@ -12,6 +12,7 @@ If adding a github to bundle, make sure to do `git submodule add (url)`
 - [Regular Expression Escape Characters](https://blog.robertelder.org/regular-expression-character-escaping/)
 - [Ruby system tutorial](https://www.rubyguides.com/2018/12/ruby-system/)
 - [Installing Gem Files per project directory](https://guilhermesimoes.github.io/blog/installing-gems-per-project-directory)
+- [Getting syscalls in Ruby](https://stackoverflow.com/questions/690151/getting-output-of-system-calls-in-ruby)
 
 ## Ideas
 

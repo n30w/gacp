@@ -7,43 +7,37 @@ require 'rubygems'
 require 'bundler/setup'
 require 'colorized_string'
 require 'whirly'
+require 'open3'
 
 ColorizedString.colors                       # return array of all possible colors names
 ColorizedString.modes                        # return array of all possible modes
 ColorizedString.disable_colorization = false
 
 # Its called "cute" because thats the second part of "execute"
-def cute(*cmd)
+def cute(cmd)
   # https://www.geeksforgeeks.org/closures-in-ruby/
-  out = -> do
-    # Returns stdout on success, false on failure, nil on error
-    # Nabbed from https://bit.ly/3fy0YEh
+  out = -> (cmd) do
     begin
       stdout, stderr, status = Open3.capture3(*cmd)
-      strip = stdout.slice!(0..-(1 + $/.size)) # strip trailing eol
-      if status.success? && strip
-        status.success?
-      elsif status.sucesss? == false && strip
-        stderr
-      end
+      status.success? && stdout.slice!(0..-(1 + $/.size))
     rescue
     end
   end
+
+  out.call(cmd)
 
   if out.instance_of? String
     puts out
   end
 end
 
-expect = ColorizedString.new("> ").yellow
 
-x = system "bundle update --all" # https://bundler.io/man/bundle-update.1.html
-
-x = system "git add \."
+system "bundle update --all --quiet --major" # https://bundler.io/man/bundle-update.1.html
+cute("git add \.")
 puts "✅ Added files to Git for staging"
 
 c = ColorizedString.new("Please input a valid commit message:").red
-
+expect = ColorizedString.new("> ").yellow
 puts "📝 Commit message:"
 print expect
 msg = gets.chomp
@@ -55,9 +49,10 @@ end
 
 c = ColorizedString.new("Success!").light_green + " Pushed to Github 🤓"
 
-x = system "git commit -m \"#{msg}\""
+cute("git commit -m \"#{msg}\"")
 puts "💍 👬 Committed 👭 💒"
+# cute("git push")
 Whirly.start spinner: "dots", status: "Pushing 🤭" do
-  a = system "git push"
+  %x[git push]
 end
-puts "📍 " + c
+puts "📍 #{c}"
