@@ -1,5 +1,8 @@
 #!/usr/bin/env ruby
 
+# TODO:
+# Add more options for gacp
+
 require 'rubygems'
 require 'bundler/setup'
 require 'colorized_string'
@@ -8,32 +11,30 @@ ColorizedString.colors                       # return array of all possible colo
 ColorizedString.modes                        # return array of all possible modes
 ColorizedString.disable_colorization = false
 
-
-# Returns stdout on success, false on failure, nil on error
-# Nabbed from https://bit.ly/3fy0YEh
-def syscall(*cmd)
-  begin
-    stdout, stderr, status = Open3.capture3(*cmd)
-    strip = stdout.slice!(0..-(1 + $/.size)) # strip trailing eol
-    if status.success? && strip
-      status.success?
-    elsif status.sucesss? == false && strip
-      stderr
+def cute(s)
+  # Returns stdout on success, false on failure, nil on error
+  # Nabbed from https://bit.ly/3fy0YEh
+  def syscall(*cmd)
+    begin
+      stdout, stderr, status = Open3.capture3(*cmd)
+      strip = stdout.slice!(0..-(1 + $/.size)) # strip trailing eol
+      if status.success? && strip
+        status.success?
+      elsif status.sucesss? == false && strip
+        stderr
+      end
+    rescue
     end
-  rescue
+  end
+  out = syscall s
+  if out.instance_of? String
+    puts out
   end
 end
 
-# TODO:
-# Add more options for gacp
-
 expect = ColorizedString.new("> ").yellow
 
-out = syscall "bundle update --all" # https://bundler.io/man/bundle-update.1.html
-
-if out.instance_of? String
-  puts out
-end
+cute("bundle update --all") # https://bundler.io/man/bundle-update.1.html
 
 system "git add \."
 puts "✅ Added files to Git for staging"
