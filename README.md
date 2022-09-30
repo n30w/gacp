@@ -2,6 +2,10 @@
 
 Simple CLI app in ruby because it makes it easy to push and such
 
+## Installation
+
+To install, run `gem install colorize` and `gem install whirly`. Then, do `mkdir -p /usr/local/bin/ && mv gacp /usr/local/bin` 
+
 ## Notes
 
 If adding a github to bundle, make sure to do `git submodule add (url)`
