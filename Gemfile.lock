@@ -1,12 +1,10 @@
-GIT
-  remote: https://github.com/fazibear/colorize
-  revision: 526654c6d7dfc5483b70184d06b994eba8359514
+PATH
+  remote: vendor/bundle/ruby/3.1.0/bundler/gems/colorize-526654c6d7df
   specs:
     colorize (0.8.1)
 
-GIT
-  remote: https://github.com/janlelis/whirly
-  revision: 02609910f9a62aab11a6ccbace446d7f4fd74cba
+PATH
+  remote: vendor/bundle/ruby/3.1.0/bundler/gems/whirly-02609910f9a6
   specs:
     whirly (0.3.0)
       unicode-display_width (>= 1.1)

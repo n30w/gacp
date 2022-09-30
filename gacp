@@ -1,9 +1,9 @@
 #!/usr/bin/env ruby
 require 'rubygems'
 require 'bundler/setup'
-require 'open3'
 require 'colorized_string'
 require 'whirly'
+require 'open3'
 
 ColorizedString.colors                       # return array of all possible colors names
 ColorizedString.modes                        # return array of all possible modes

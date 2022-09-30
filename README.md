@@ -11,8 +11,11 @@ If adding a github to bundle, make sure to do `git submodule add (url)`
 - [How to make a Ruby script a shell script](https://stackoverflow.com/questions/28018591/how-do-i-make-a-ruby-script-into-a-bash-command)
 - [Regular Expression Escape Characters](https://blog.robertelder.org/regular-expression-character-escaping/)
 - [Ruby system tutorial](https://www.rubyguides.com/2018/12/ruby-system/)
+- [argv](https://www.rubyguides.com/2018/12/ruby-argv/)
 - [Installing Gem Files per project directory](https://guilhermesimoes.github.io/blog/installing-gems-per-project-directory)
 - [Getting syscalls in Ruby](https://stackoverflow.com/questions/690151/getting-output-of-system-calls-in-ruby)
+- [Getting cmd output from Ruby](https://www.honeybadger.io/blog/capturing-stdout-stderr-from-shell-commands-via-ruby/)
+- [CMD Tools](https://www.cloudbees.com/blog/creating-powerful-command-line-tools-in-ruby)
 
 ## Ideas
 
