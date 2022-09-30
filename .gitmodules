@@ -1,3 +1,6 @@
 [submodule "vendor/bundle/ruby/3.1.0/bundler/gems/colorize-526654c6d7df"]
 	path = vendor/bundle/ruby/3.1.0/bundler/gems/colorize-526654c6d7df
 	url = https://github.com/fazibear/colorize
+[submodule "vendor/bundle/ruby/3.1.0/bundler/gems/whirly-02609910f9a6"]
+	path = vendor/bundle/ruby/3.1.0/bundler/gems/whirly-02609910f9a6
+	url = https://github.com/janlelis/whirly

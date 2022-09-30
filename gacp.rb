@@ -11,10 +11,11 @@ ColorizedString.colors                       # return array of all possible colo
 ColorizedString.modes                        # return array of all possible modes
 ColorizedString.disable_colorization = false
 
-def cute(s)
-  # Returns stdout on success, false on failure, nil on error
-  # Nabbed from https://bit.ly/3fy0YEh
-  def syscall(*cmd)
+def cute(*cmd)
+  # https://www.geeksforgeeks.org/closures-in-ruby/
+  out = -> do
+    # Returns stdout on success, false on failure, nil on error
+    # Nabbed from https://bit.ly/3fy0YEh
     begin
       stdout, stderr, status = Open3.capture3(*cmd)
       strip = stdout.slice!(0..-(1 + $/.size)) # strip trailing eol
@@ -26,7 +27,7 @@ def cute(s)
     rescue
     end
   end
-  out = syscall s
+
   if out.instance_of? String
     puts out
   end
@@ -34,7 +35,7 @@ end
 
 expect = ColorizedString.new("> ").yellow
 
-cute("bundle update --all") # https://bundler.io/man/bundle-update.1.html
+cute "bundle update --all" # https://bundler.io/man/bundle-update.1.html
 
 system "git add \."
 puts "✅ Added files to Git for staging"
@@ -53,5 +54,6 @@ c = ColorizedString.new("Success").light_green + "! Pushed to Github 🤓"
 
 system "git commit -m \"#{msg}\""
 puts "💍 Committed 💒"
-system "git push"
+puts "pushing..."
+cute "git push"
 puts "📍 " + c

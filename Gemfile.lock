@@ -4,15 +4,24 @@ GIT
   specs:
     colorize (0.8.1)
 
+GIT
+  remote: https://github.com/janlelis/whirly
+  revision: 02609910f9a62aab11a6ccbace446d7f4fd74cba
+  specs:
+    whirly (0.3.0)
+      unicode-display_width (>= 1.1)
+
 GEM
   remote: https://rubygems.org/
   specs:
+    unicode-display_width (2.3.0)
 
 PLATFORMS
   arm64-darwin-21
 
 DEPENDENCIES
   colorize!
+  whirly!
 
 BUNDLED WITH
    2.3.22
