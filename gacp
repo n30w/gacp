@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 require 'rubygems'
 require 'bundler/setup'
-require 'colorized_string'
+require './vendor/bundle/ruby/3.1.0/bundler/gems/colorize-526654c6d7df/lib/colorized_string.rb'
 require 'whirly'
 require 'open3'
 
