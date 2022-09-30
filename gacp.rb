@@ -31,7 +31,6 @@ def cute(cmd)
   end
 end
 
-
 system "bundle update --all --quiet --major" # https://bundler.io/man/bundle-update.1.html
 cute("git add \.")
 puts "✅ Added files to Git for staging"
@@ -53,6 +52,7 @@ cute("git commit -m \"#{msg}\"")
 puts "💍 👬 Committed 👭 💒"
 # cute("git push")
 Whirly.start spinner: "dots", status: "Pushing 🤭" do
-  %x[git push]
+  # %x[git push]
+  cute("git push")
 end
 puts "📍 #{c}"
