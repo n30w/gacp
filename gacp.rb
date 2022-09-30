@@ -37,9 +37,9 @@ end
 
 expect = ColorizedString.new("> ").yellow
 
-cute "bundle update --all" # https://bundler.io/man/bundle-update.1.html
+x = system "bundle update --all" # https://bundler.io/man/bundle-update.1.html
 
-system "git add \."
+x = system "git add \."
 puts "✅ Added files to Git for staging"
 
 c = ColorizedString.new("Please input a valid commit message:").red
@@ -55,7 +55,7 @@ end
 
 c = ColorizedString.new("Success!").light_green + " Pushed to Github 🤓"
 
-cute "git commit -m \"#{msg}\""
+x = system "git commit -m \"#{msg}\""
 puts "💍 👬 Committed 👭 💒"
 Whirly.start spinner: "dots", status: "Pushing 🤭" do
   a = system "git push"
