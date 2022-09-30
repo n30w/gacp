@@ -1,8 +1,4 @@
 #!/usr/bin/env ruby
-
-# TODO:
-# Add more options for gacp
-
 require 'rubygems'
 require 'bundler/setup'
 require 'colorized_string'
@@ -13,7 +9,10 @@ ColorizedString.colors                       # return array of all possible colo
 ColorizedString.modes                        # return array of all possible modes
 ColorizedString.disable_colorization = false
 
+# TODO:
+# Add more options for gacp
 # Its called "cute" because thats the second part of "execute"
+
 def cute(cmd)
   # https://www.geeksforgeeks.org/closures-in-ruby/
   out = -> (cmd) do
@@ -51,7 +50,7 @@ c = ColorizedString.new("Success!").light_green + " Pushed to Github 🤓"
 cute("git commit -m \"#{msg}\"")
 puts "💍 👬 Committed 👭 💒"
 # cute("git push")
-Whirly.start spinner: "dots", status: "Pushing 🤭" do
+Whirly.start spinner: "spin", status: "Pushing 🤭" do
   # %x[git push]
   cute("git push")
 end
