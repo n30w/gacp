@@ -50,7 +50,7 @@ c = ColorizedString.new("Success!").light_green + " Pushed to Github 🤓"
 cute("git commit -m \"#{msg}\"")
 puts "💍 👬 Committed 👭 💒"
 # cute("git push")
-Whirly.start spinner: "spin", status: "Pushing 🤭" do
+Whirly.start spinner: "dots2", status: "Pushing 🤭" do
   # %x[git push]
   cute("git push")
 end
