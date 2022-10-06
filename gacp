@@ -63,13 +63,12 @@ if is_git_dir
 
   cute("git commit -m \"#{msg}\"")
   puts "💍 👬 Committed 👭 💒"
-  # cute("git push")
   Whirly.start spinner: "dots2", status: "Pushing 🤭", stop: "😇" do
-    # %x[git push]
     cute("git push")
   end
 
   puts "📍 #{c}"
 else 
-  puts "Current directory is not a git repository!"
+  f = ColorizedString.new("Current directory is not a git repository!").red
+  puts "#{f}"
 end
