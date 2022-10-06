@@ -30,30 +30,46 @@ def cute (cmd)
   end
 end
 
-# system "bundle update --all --quiet --major" https://bundler.io/man/bundle-update.1.html
-cute("git add \.")
-puts "✅ Added files to Git for staging"
 
-c = ColorizedString.new("Please input a valid commit message:").red
-expect = ColorizedString.new("> ").yellow
-puts "📝 Commit message:"
-print expect
-msg = gets.chomp
-until msg.length > 1 do
-  puts "🤨 #{c}"
+# Check if current dir has a .git folder
+dirs = Dir.glob(".*", File::FNM_DOTMATCH)
+is_git_dir = false
+
+dirs.each do |d|
+  if d == ".git"
+    is_git_dir = true
+  end
+end
+
+
+if is_git_dir 
+  # system "bundle update --all --quiet --major" https://bundler.io/man/bundle-update.1.html
+  cute("git add \.")
+  puts "✅ Added files to Git for staging"
+
+  c = ColorizedString.new("Please input a valid commit message:").red
+  expect = ColorizedString.new("> ").yellow
+  puts "📝 Commit message:"
   print expect
+
   msg = gets.chomp
+  until msg.length > 1 do
+    puts "🤨 #{c}"
+    print expect
+    msg = gets.chomp
+  end
+
+  c = ColorizedString.new("Success!").light_green + " Pushed to Github 🤓"
+
+  cute("git commit -m \"#{msg}\"")
+  puts "💍 👬 Committed 👭 💒"
+  # cute("git push")
+  Whirly.start spinner: "dots2", status: "Pushing 🤭", stop: "😇" do
+    # %x[git push]
+    cute("git push")
+  end
+
+  puts "📍 #{c}"
+else 
+  puts "Current directory is not a git repository!"
 end
-
-c = ColorizedString.new("Success!").light_green + " Pushed to Github 🤓"
-
-cute("git commit -m \"#{msg}\"")
-puts "💍 👬 Committed 👭 💒"
-# cute("git push")
-Whirly.start spinner: "dots2", status: "Pushing 🤭", stop: "😇" do
-  # %x[git push]
-  cute("git push")
-end
-puts "📍 #{c}"
-
-#test
